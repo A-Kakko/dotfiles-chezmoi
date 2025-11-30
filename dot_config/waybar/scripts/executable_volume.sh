@@ -97,7 +97,7 @@ toggle-mute() {
 	state=$(check-muted)
 	icon=$(get-icon)
 
-	notify-send "$title: $state" -i "$icon" -r $ID
+	# notify-send "$title: $state" -i "$icon" -r $ID
 }
 
 set-volume() {
@@ -121,7 +121,7 @@ set-volume() {
 	local icon
 	icon=$(get-icon "$new_vol")
 
-	notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $ID
+	# notify-send "$title: ${new_vol}%" -h int:value:$new_vol -i "$icon" -r $ID
 }
 
 main() {
