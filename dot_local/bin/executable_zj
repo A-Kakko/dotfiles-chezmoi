@@ -1,0 +1,49 @@
+#!/usr/bin/env fish
+
+set -euo pipefail
+
+function changeSession
+    set -l session_name $argv[1]
+    if set -q ZELLIJ
+        zellij action switch-mode normal
+        zellij action go-to-tab-name $session_name
+    else
+        zellij attach $session_name
+    end
+end
+
+function createSessionIfNeeded
+    set -l name $argv[1]
+    if set -q argv[2]
+        set -l dir $argv[2]
+    else
+        set -l dir (pwd)
+    end
+
+    if not zellij list-sessions 2>/dev/null | grep -q "^$name\$"
+        zellij --session $name --layout default options --default-cwd $dir &
+        sleep 0.5
+    end
+end
+
+function selectRepo
+    set -l root (ghq root)
+    set -l selected (ghq list | fzf)
+    echo "$root/$selected"
+end
+
+function main
+    if test (count $argv) -eq 1
+        createSessionIfNeeded $argv[1]
+        changeSession $argv[1]
+        exit
+    end
+
+    set -l repo (selectRepo)
+    set -l session (basename $repo)
+
+    createSessionIfNeeded $session $repo
+    changeSession $session
+end
+
+main $argv

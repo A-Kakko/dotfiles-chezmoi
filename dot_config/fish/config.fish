@@ -25,6 +25,8 @@ abbr -a lg lazygit
 abbr -a ls exa
 abbr -a cat bat
 abbr -a cr 'cargo run'
+abbr -a zlj 'zellij attach -c development'
+abbr -a 'https://github.com/' 'git@github.com'
 # ==================== Zellij関連のエイリアス ==================== #
 alias ta='zellij attach'
 alias tl='zellij list-sessions'
@@ -57,6 +59,12 @@ fish_add_path ~/.cargo/bin
 # Starship設定 (fish専用の設定を使用)
 set -x STARSHIP_CONFIG ~/.config/starship-fish.toml
 starship init fish | source
+
+# ==================== Pywal カラースキーム ==================== #
+# Import colorscheme from 'wal' asynchronously
+if test -f ~/.cache/wal/sequences
+    cat ~/.cache/wal/sequences &
+end
 
 # ===================== ya ()========================================================#
 function y
