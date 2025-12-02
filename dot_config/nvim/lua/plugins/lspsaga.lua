@@ -14,12 +14,18 @@ return {
   },
   config = function()
     require("lspsaga").setup({
+      ui = {
+        border = "rounded",
+        title = true, -- タイトルを常に表示
+      },
       lightbulb = {
-        enable = true,
+        enable = false, -- 電球を完全に無効化
         enable_in_insert = false,
         sign = false,
       },
       finder = {
+        max_height = 0.8,
+        min_width = 50,
         keys = {
           toggle_or_open = "<CR>",
           vsplit = "v",
@@ -28,6 +34,9 @@ return {
         },
       },
       definition = {
+        width = 0.8,
+        height = 0.6,
+        show_name = true, -- ファイル名を表示
         keys = {
           edit = "<CR>",
           vsplit = "<C-c>v",
@@ -45,7 +54,7 @@ return {
         enable = true,
       },
       code_action_lightbulb = {
-        enable = true,
+        enable = false, -- 電球を無効化
       },
       show_outline = {
         win_width = 50,
