@@ -14,3 +14,8 @@ vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 
 vim.opt.swapfile = false
+vim.opt.cmdheight = 0
+if vim.g.vscode then
+  -- https://github.com/vscode-neovim/vscode-neovim/issues/2109
+  vim.opt.cmdheight = 1
+end
