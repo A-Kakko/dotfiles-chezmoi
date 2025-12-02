@@ -2,6 +2,14 @@
 
 WALLPAPER_DIR="$HOME/Wallpapers"  # 壁紙フォルダのパス
 INTERVAL=600  # 切り替え間隔（秒）デフォルト10分
+LOCKFILE="/tmp/wallpaper.lock"
+
+# ロックファイルを使って、一度に一つのインスタンスだけが動くようにする
+exec 200>"$LOCKFILE"
+flock -n 200 || { echo "Another instance is already running. Exiting."; exit 1; }
+
+# スクリプト終了時にロックファイルを削除
+trap "rm -f $LOCKFILE" EXIT
 
 # ランダムな壁紙を選択して設定
 while true; do
