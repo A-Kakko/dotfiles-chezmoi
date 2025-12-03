@@ -36,7 +36,9 @@ alias zls='zellij list-sessions'
 alias za='zellij attach'
 alias zk='zellij kill-session'
 alias zedit='$EDITOR ~/.config/zellij/config.kdl'
-
+#==================atcoder========================================#
+abbr -a ojt 'oj t -c "python3 main.py"'
+abbr -a ojs 'oj s main.py'
 # ==================== 環境変数 ==================== #
 # 日本語環境
 set -x LANG ja_JP.UTF-8
