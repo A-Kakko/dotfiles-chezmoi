@@ -1,0 +1,13 @@
+# Mako notification daemon configuration
+
+# 通知の表示時間（ミリ秒）
+default-timeout=10000
+
+# 色設定（catppuccinテーマ）
+background-color=#0a0908
+text-color=#a7c2c3
+border-color=#2A555C
+
+# その他の設定
+border-size=2
+border-radius=10
