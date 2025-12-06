@@ -11,3 +11,10 @@ border-color=#2A555C
 # その他の設定
 border-size=2
 border-radius=10
+
+# criticalな通知も自動的に消す
+ignore-timeout=0
+
+# Chromiumからの通知（YouTube含む）の設定
+[app-name=Chromium]
+default-timeout=5000
